@@ -1,0 +1,41 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: receive-message-twilio-service
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: twilio
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+  queue:
+    message:
+      name: send_message_queue
+    report:
+      name: report_message_queue
+  exchange:
+    message:
+      name: message_exchange
+    report:
+      name: report_exchange
+  routing:
+    message:
+      key:
+        message
+    report:
+      key:
+        report
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone:
+        http://localhost:9999/eureka
+
